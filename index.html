@@ -91,7 +91,7 @@
 						
 							<article class="work-item-stacked">
 								<div class="project-image">
-									<a href="images/PictureCollectionRig.png" class="image fit thumb"><img src="images/thumbs/rig-thumb.png" alt="Synchronized Cavitation Experimental Rig" /></a>
+									<a href="images/fulls/PictureCollectionRig.png" class="image fit thumb"><img src="images/PictureCollectionRig.png" alt="Synchronized Cavitation Experimental Rig" /></a>
 								</div>
 								<div class="project-text">
 									<h3>Experimental Rig for Laser-Induced Cavitation Bubble Generation</h3>
@@ -158,11 +158,9 @@
 						<div class="row">
 							<div class="col-8 col-12-small">
 								
-								<form action="https://api.web3forms.com/submit" method="POST">
+								<form id="contact-form">
 									
 									<input type="hidden" name="access_key" value="d6b2e179-a4b4-42e4-a377-12fcce19b659">
-									
-									<input type="hidden" name="redirect" value="https://web3forms.com/success">
 
 									<div class="row gtr-uniform gtr-50">
 										<div class="col-6 col-12-xsmall">
@@ -178,9 +176,42 @@
 											<ul class="actions">
 												<li><input type="submit" value="Send Message" class="primary" /></li>
 											</ul>
+											<p id="form-result" style="margin-top: 15px; font-weight: bold;"></p>
 										</div>
 									</div>
 								</form>
+
+								<script>
+								document.getElementById('contact-form').addEventListener('submit', function(e) {
+									e.preventDefault();
+									const form = e.target;
+									const result = document.getElementById('form-result');
+									const formData = new FormData(form);
+
+									result.innerText = "Sending message...";
+									result.style.color = "#888";
+
+									fetch('https://api.web3forms.com/submit', {
+										method: 'POST',
+										body: formData
+									})
+									.then(response => response.json())
+									.then(data => {
+										if (data.success) {
+											result.innerHTML = "Message received. Thank you for reaching out! I will review your inquiry regarding potential R&D roles or collaborations and reply to you shortly.";
+											result.style.color = "#28a745";
+											form.reset();
+										} else {
+											result.innerText = "Error sending message. Please try again or email me directly.";
+											result.style.color = "#dc3545";
+										}
+									})
+									.catch(error => {
+										result.innerText = "Something went wrong. Please email me directly.";
+										result.style.color = "#dc3545";
+									});
+								});
+								</script>
 
 							</div>
 							<div class="col-4 col-12-small">
