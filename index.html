@@ -7,17 +7,62 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		
 		<style>
+			/* --- CUSTOM BACKGROUND STYLE --- */
 			#header {
 				/* This makes your collage the background of the left panel */
 				background-image: url('images/PictureCollection.png') !important;
-				background-size: cover !important;
+				background-size: contain !important; /* Zooms out so border images aren't cut off */
+				background-repeat: no-repeat !important; /* Prevents tiling */
 				background-position: center !important;
+				background-color: #111 !important; /* Fills empty space with a dark background */
 			}
 			/* This adds a semi-transparent dark box behind your text so it stays readable */
 			#header .inner {
-				background: rgba(0, 15, 30, 0.75); 
+				background: rgba(0, 15, 30, 0.85); 
 				padding: 30px;
 				border-radius: 15px;
+			}
+
+			/* --- NEW STACKED PROJECT LAYOUT STYLES --- */
+			.work-item-stacked {
+				display: flex;
+				align-items: flex-start;
+				margin-bottom: 4em; /* Spacing between projects */
+				gap: 2.5em; /* Spacing between image and text */
+			}
+			
+			.project-image {
+				flex: 0 0 45%; /* Image takes up 45% of width */
+				max-width: 45%;
+			}
+			
+			.project-text {
+				flex: 1; /* Text takes up the rest */
+			}
+			
+			.project-text h3 {
+				margin-top: 0;
+				margin-bottom: 0.5em;
+				font-size: 1.3em; /* Larger title font */
+			}
+			
+			.project-text p {
+				font-size: 1.1em; /* Larger description font */
+				line-height: 1.6;
+				margin-bottom: 0;
+			}
+
+			/* Stacks the image on top of the text on mobile phones */
+			@media screen and (max-width: 736px) {
+				.work-item-stacked {
+					flex-direction: column;
+					gap: 1.5em;
+					margin-bottom: 3em;
+				}
+				.project-image {
+					flex: 0 0 100%;
+					max-width: 100%;
+				}
 			}
 		</style>
 	</head>
@@ -25,7 +70,7 @@
 
 		<header id="header">
 				<div class="inner">
-					<a href="#" class="image avatar"><img src="images/ProfilePic.jpeg" alt="Roshan K. Subramanian" /></a>
+					<a href="#" class="image avatar"><img src="images/ProfilePic.jpg" alt="Roshan K. Subramanian" /></a>
 					
 					<h1><strong>I am Roshan Subramanian.</strong><br />
 					Interdisciplinary experimental fluid dynamicist.<br />
@@ -51,42 +96,66 @@
 
 				<section id="two">
 						<h2>Recent Work</h2>
-						<div class="row">
+						<div class="projects-container">
 						
-							<article class="col-6 col-12-xsmall work-item">
-   								<a href="images/fulls/PictureCollectionRig.png" class="image fit thumb"><img src="images/thumbs/rig-thumb.png" alt="Synchronized Cavitation Experimental Rig" /></a>
-    								<h3>Experimental Rig for Laser-Induced Cavitation</h3>
-    								<p>Designed and constructed a complex experimental rig for laser-induced cavitation bubble generation. Absolute structural 									alignment—achieved via specialized level gauges and exact laser focusing optics—was crucial to accurately capture extreme, 									high-speed multiphase physics. Engineered a synchronized Schlieren optical setup to visualize and isolate microsecond-level 									shock wave emission and transient fluid boundaries.</p>
+							<article class="work-item-stacked">
+								<div class="project-image">
+									<a href="images/fulls/PictureCollectionRig.png" class="image fit thumb"><img src="images/thumbs/rig-thumb.png" alt="Synchronized Cavitation Experimental Rig" /></a>
+								</div>
+								<div class="project-text">
+									<h3>Experimental Rig for Laser-Induced Cavitation Bubble Generation</h3>
+									<p>Designed and constructed a complex experimental rig for laser-induced cavitation bubble generation. Absolute structural alignment—achieved via specialized level gauges and exact laser focusing optics—was crucial to accurately capture extreme, high-speed multiphase physics. Engineered a synchronized Schlieren optical setup to visualize and isolate microsecond-level shock wave emission and transient fluid boundaries.</p>
+								</div>
 							</article>
 							
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/collapse-full.gif" class="image fit thumb"><img src="images/thumbs/collapse-thumb.jpg" alt="High-speed cavitation bubble collapse" /></a>
-								<h3>Resolving a 100-Year-Old Fluid Mechanics Debate</h3>
-								<p>Engineered a synchronized >100,000 fps multi-modal optical pipeline to definitively prove that shock waves—not microjets—dominate peak wall loading during cavitation. (Featured Article, <em>Physics of Fluids</em>).</p>
+							<article class="work-item-stacked">
+								<div class="project-image">
+									<a href="images/fulls/collapse-full.gif" class="image fit thumb"><img src="images/thumbs/collapse-thumb.jpg" alt="High-speed cavitation bubble collapse" /></a>
+								</div>
+								<div class="project-text">
+									<h3>Resolving a 100-Year-Old Fluid Mechanics Debate</h3>
+									<p>Engineered a synchronized >100,000 fps multi-modal optical pipeline to definitively prove that shock waves—not microjets—dominate peak wall loading during cavitation. (Featured Article, <em>Physics of Fluids</em>).</p>
+								</div>
 							</article>
 
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/02.jpg" class="image fit thumb"><img src="images/thumbs/02.jpg" alt="Micro Sensor" /></a>
-								<h3>Sub-15μs Micro Cold-Wire Sensor Fabrication</h3>
-								<p>Designed and deployed custom micro-sensors in a cleanroom environment, bypassing commercial thermal-fluid measurement limits.</p>
+							<article class="work-item-stacked">
+								<div class="project-image">
+									<a href="images/fulls/02.jpg" class="image fit thumb"><img src="images/thumbs/02.jpg" alt="Micro Sensor" /></a>
+								</div>
+								<div class="project-text">
+									<h3>Sub-15μs Micro Cold-Wire Sensor Fabrication</h3>
+									<p>Designed and deployed custom micro-sensors in a cleanroom environment, bypassing commercial thermal-fluid measurement limits.</p>
+								</div>
 							</article>
 
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/03.jpg" class="image fit thumb"><img src="images/thumbs/03.jpg" alt="HIFU" /></a>
-								<h3>HIFU Biomedical Tumor Ablation Support</h3>
-								<p>Mapped critical acoustic thresholds for cavitation clouds to directly accelerate the hardware development of non-invasive biomedical devices.</p>
+							<article class="work-item-stacked">
+								<div class="project-image">
+									<a href="images/fulls/03.jpg" class="image fit thumb"><img src="images/thumbs/03.jpg" alt="HIFU" /></a>
+								</div>
+								<div class="project-text">
+									<h3>HIFU Biomedical Tumor Ablation Support</h3>
+									<p>Mapped critical acoustic thresholds for cavitation clouds to directly accelerate the hardware development of non-invasive biomedical devices.</p>
+								</div>
 							</article>
 
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/04.jpg" class="image fit thumb"><img src="images/thumbs/04.jpg" alt="Data Pipeline" /></a>
-								<h3>High-Speed Data Acquisition Pipelines</h3>
-								<p>Developed automated Python and MATLAB architectures for high-throughput, microsecond-resolution signal processing.</p>
+							<article class="work-item-stacked">
+								<div class="project-image">
+									<a href="images/fulls/04.jpg" class="image fit thumb"><img src="images/thumbs/04.jpg" alt="Data Pipeline" /></a>
+								</div>
+								<div class="project-text">
+									<h3>High-Speed Data Acquisition Pipelines</h3>
+									<p>Developed automated Python and MATLAB architectures for high-throughput, microsecond-resolution signal processing.</p>
+								</div>
 							</article>
 
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/06.jpg" class="image fit thumb"><img src="images/thumbs/06.jpg" alt="Modeling" /></a>
-								<h3>Computational & Theoretical Modeling</h3>
-								<p>Derived analytical models to validate empirical data against complex Navier-Stokes and potential flow assumptions.</p>
+							<article class="work-item-stacked">
+								<div class="project-image">
+									<a href="images/fulls/06.jpg" class="image fit thumb"><img src="images/thumbs/06.jpg" alt="Modeling" /></a>
+								</div>
+								<div class="project-text">
+									<h3>Computational & Theoretical Modeling</h3>
+									<p>Derived analytical models to validate empirical data against complex Navier-Stokes and potential flow assumptions.</p>
+								</div>
 							</article>
 
 						</div>
